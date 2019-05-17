@@ -1,0 +1,25 @@
+alias python="python3"
+
+alias vimrc="nvim ~/.vimrc"
+alias zshrc="nvim ~/.zshrc"
+
+alias vimdiff="nvim -d"
+
+alias gotiki="cd ~/development/Tiki"
+alias gode="cd ~/development"
+alias gotala="cd ~/development/Tiki/talaria"
+alias gogrok="cd ~/development/Grokking"
+
+# git
+alias gpm="git checkout master && git pull origin master"
+alias gc="git checkout"
+alias gaa="git add -A"
+alias ga="git add"
+alias gcmm="git commit -m"
+alias gpo="git push origin"
+alias gplo="git pull origin"
+alias gmo="git merge origin"
+alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gacm="gaa && gcmm"
+alias gars="git add . && git rebase --skip"
+alias garc="git add . && git rebase --continue"
