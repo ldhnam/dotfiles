@@ -1,0 +1,12 @@
+# ~/.gitconfig
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+    name = ldhnam
+    email = namhoai95@gmail.com
+[core]
+	trustctime = false
+[alias]
+  #ll = log --color --graph --pretty=format:\n  '%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)\n  %Creset' --abbrev-commit --decorate --numstat
+  ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  l = log --all --decorate --oneline --graph
