@@ -15,6 +15,7 @@
   #TERM: xterm-256color
 
   window:
+    dynamic_title: true
     # Window dimensions (changes require restart)
     #
     # Specified in number of columns/lines, not pixels.
@@ -107,7 +108,7 @@
       #   - (Linux) monospace
       #   - (Windows) Consolas
       #family: monospace
-      family: Source Code Pro
+      family: Hack Nerd Font 
   
       # The `style` can be specified to pick a specific face.
       style: Regular
@@ -119,7 +120,7 @@
       # If the bold family is not specified, it will fall back to the
       # value specified for the normal font.
       #family: monospace
-      family: Source Code Pro
+      family: Fira Code
   
       # The `style` can be specified to pick a specific face.
       style: Bold
@@ -131,13 +132,13 @@
       # If the italic family is not specified, it will fall back to the
       # value specified for the normal font.
       # family: monospace
-      family: Source Code Pro
+      family: Fira Code
   
       # The `style` can be specified to pick a specific face.
       style: Italic
   
     # Point size
-    size: 13.0
+    size: 12.0
   
     # Offset is the extra space around each character. `offset.y` can be thought of
     # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -177,8 +178,8 @@
     primary:
       #background: '0x000000'
       #foreground: '0xeaeaea'
-      background: '0x262626'
-      foreground: '0xeaeaea'
+      background: '#282828'
+      foreground: '#ebdbb2'
   
       # Bright and dim foreground colors
       #
@@ -209,41 +210,25 @@
   
     # Normal colors
     normal:
-      # black:   '0x000000'
-      # red:     '0xd54e53'
-      # green:   '0xb9ca4a'
-      # yellow:  '0xe6c547'
-      # blue:    '0x7aa6da'
-      # magenta: '0xc397d8'
-      # cyan:    '0x70c0ba'
-      # white:   '0xeaeaea'
-      black:   '0x000000'
-      red:     '0xe74c3c'
-      green:   '0xb9ca4a'
-      yellow:  '0xe6c547'
-      blue:    '0x7aa6da'
-      magenta: '0xc397d8'
-      cyan:    '0x70c0ba'
-      white:   '0xffffff'
+      black:   '#282828'
+      red:     '#cc241d'
+      green:   '#98971a'
+      yellow:  '#d79921'
+      blue:    '#458588'
+      magenta: '#b16286'
+      cyan:    '#689d6a'
+      white:   '#a89984'
   
     # Bright colors
     bright:
-      # black:   '0x666666'
-      # red:     '0xff3334'
-      # green:   '0x9ec400'
-      # yellow:  '0xe7c547'
-      # blue:    '0x7aa6da'
-      # magenta: '0xb77ee0'
-      # cyan:    '0x54ced6'
-      # white:   '0xffffff'
-      black:   '0x666666'
-      red:     '0xe74c3c'
-      green:   '0x9ec400'
-      yellow:  '0xe7c547'
-      blue:    '0x7aa6da'
-      magenta: '0xb77ee0'
-      cyan:    '0x54ced6'
-      white:   '0xffffff'
+      black:   '#928374'
+      red:     '#fb4934'
+      green:   '#b8bb26'
+      yellow:  '#fabd2f'
+      blue:    '#83a598'
+      magenta: '#d3869b'
+      cyan:    '#8ec07c'
+      white:   '#ebdbb2'
   
     # Dim colors
     #
@@ -298,7 +283,7 @@
   #   - Linear
   #
   # Specifying a `duration` of `0` will disable the visual bell.
-  visual_bell:
+  bell:
     animation: EaseOutExpo
     duration: 0
     color: '0xffffff'
@@ -368,7 +353,7 @@
     save_to_clipboard: false
   
   # Allow terminal applications to change Alacritty's window title.
-  dynamic_title: true
+  #window.dynamic_title: true
   
   cursor:
     # Cursor style

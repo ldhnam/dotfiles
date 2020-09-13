@@ -3,11 +3,12 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/ldhnam/.oh-my-zsh"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -25,8 +26,14 @@ ZSH_THEME="agnoster"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -62,10 +69,10 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  kubectl
-  history-substring-search
-  zsh-syntax-highlighting
+   git
+   kubectl
+   zsh-syntax-highlighting
+   kubetail
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -87,9 +94,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -98,81 +102,44 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-plugins=(git)
+plugins=(
+   git
+   zsh-syntax-highlighting
+)
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ldhnam/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ldhnam/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ldhnam/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ldhnam/google-cloud-sdk/completion.zsh.inc'; fi
 
 alias vim=nvim
-
+alias pip=pip3
 export EDITOR=nvim
-#export PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[pink]%}%D{%T}%{$reset_color%} [$(whoami)] %{$fg_bold[blue]%}%c $(git_prompt_info)% %{$reset_color%}'
 export TERM=xterm-256color
-#export TERM="screen-256color"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -s /Users/ldhnam/.autojump/etc/profile.d/autojump.sh ]] && source /Users/ldhnam/.autojump/etc/profile.d/autojump.sh
 
-# Alias
+#Alias
 [ -f ~/.zshrc.alias ] && source ~/.zshrc.alias
-[ -f ~/.zsh_utils.zsh ] && source ~/.zsh_utils.zsh
 
-export GOPATH=$HOME/go/src/
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-#export GO111MODULE=on
-export ANDROID_HOME=/Users/ldhnam/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/bin
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-# export PATH=$HOME/development/zephir
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home
-
-# For pkg-config to find zlib you may need to set:
-export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
-
-# Sytax highlighting: git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/.zsh/
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source <(kubectl completion zsh)
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/ldhnam/development/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ldhnam/development/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/ldhnam/development/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ldhnam/development/google-cloud-sdk/completion.zsh.inc'; fi
-
-source $HOME/.cargo/env
-export GITHUB_TOKEN="14b749502839a940cc598c2f5c8cac45b34713b8"
-
-#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-export HOMEBREW_GITHUB_API_TOKEN=00fdb0be9e0a9336be16cca99ca94f27e1d1b556
-export PATH="$PATH:/Users/ldhnam/development/flutter/bin"
-
-# Python Version Manager
-export PATH="$PATH:$HOME/.pyenv/bin"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-eval "$(rbenv init -)"
-
-#K8S
-export KUBECONFIG="/Users/ldhnam/.kube/config:/Users/ldhnam/.kube/checkout.config:/Users/ldhnam/.kube/staging.config:/Users/ldhnam/.kube/dev.config"
-export LC_ALL=en_US.UTF-8
-
-kube-init-config() {
-    if [[ $(ls ~/.kube | egrep "\.config$" | wc -l) -ne 0 ]] ; then
-        export KUBECONFIG="${HOME}/.kube/config"
-        for f_config in $(ls ~/.kube | egrep "\.config$") ; do
-            export KUBECONFIG="$KUBECONFIG:$HOME/.kube/$f_config"
-        done
-    fi
-}
-
-ZSH_THEME_GIT_PROMPT_DIRTY='±'
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+export GOPRIVATE=git.begroup.team,git.veep.tech,github.com
+export GOOGLE_APPLICATION_CREDENTIALS=~/application_default_credentials.json
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 function _git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
-  echo "${ref/refs\/heads\//⭠ }$(parse_git_dirty)"
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="‚û¶ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+  echo "${ref/refs\/heads\//‚≠† }$(parse_git_dirty)"
 }
 
 function _git_info() {
@@ -187,9 +154,9 @@ function _git_info() {
         BG_COLOR=red
         FG_COLOR=white
     fi
-    echo "%{%K{$BG_COLOR}%}⮀%{%F{$FG_COLOR}%} $(_git_prompt_info) %{%F{$BG_COLOR}%K{blue}%}⮀"
+    echo "%{%K{$BG_COLOR}%}‚ÆÄ%{%F{$FG_COLOR}%} $(_git_prompt_info) %{%F{$BG_COLOR}%K{blue}%}‚ÆÄ"
   else
-    echo "%{%K{blue}%}⮀"
+    echo "%{%K{blue}%}‚ÆÄ"
   fi
 }
 
@@ -197,25 +164,27 @@ function virtualenv_info {
     [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
 }
 
-PROMPT_HOST='%{%b%F{gray}%K{black}%} %(?.%{%F{green}%}✔.%{%F{red}%}✘)%{%F{yellow}%} %n %{%F{black}%}'
+PROMPT_HOST='%{%b%F{gray}%K{black}%} %(?.%{%F{green}%}‚úî.%{%F{red}%}‚úò)%{%F{yellow}%} %n %{%F{black}%}'
 PROMPT_DIR='%{%F{white}%} %~%  '
-PROMPT_SU='%(!.%{%k%F{blue}%K{black}%}⮀%{%F{yellow}%} ⚡ %{%k%F{black}%}.%{%k%F{blue}%})⮀%{%f%k%b%}'
+PROMPT_SU='%(!.%{%k%F{blue}%K{black}%}‚ÆÄ%{%F{yellow}%} ‚ö° %{%k%F{black}%}.%{%k%F{blue}%})‚ÆÄ%{%f%k%b%}'
 
 PROMPT='%{%f%b%k%}$PROMPT_HOST$(_git_info)$PROMPT_DIR$PROMPT_SU
-$(virtualenv_info)❯ '
+$(virtualenv_info)‚ùØ '
 RPROMPT='%{$fg[green]%}[%*]%{$reset_color%}'
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+function prepend_path() {
+    [[ ! -d "$1" ]] && return
 
-curl_time() {
-    curl -so /dev/null -w "\
-   namelookup:  %{time_namelookup}s\n\
-      connect:  %{time_connect}s\n\
-   appconnect:  %{time_appconnect}s\n\
-  pretransfer:  %{time_pretransfer}s\n\
-     redirect:  %{time_redirect}s\n\
-starttransfer:  %{time_starttransfer}s\n\
--------------------------\n\
-        total:  %{time_total}s\n" "$@"
+    path=(
+        $1
+        $path
+    )
 }
+
+prepend_path $HOME/bin
+
+export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"
+export PATH="$PATH:~/development/flutter/bin"
+export PATH=/usr/local/opt/mysql-client@5.7/bin:/usr/local/opt/python/libexec/bin:/Users/ldhnam/.autojump/bin:/Users/ldhnam/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ldhnam/.oh-my-zsh/custom/plugins/kubetail:/Users/ldhnam/.fzf/bin:/Users/ldhnam/go/bin:/usr/local/opt/go/libexec/bin:~/development/flutter/bin:/Users/ldhnam/development/day_night_login/flutter/bin
+
+source $HOME/.cargo/env

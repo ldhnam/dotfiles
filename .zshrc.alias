@@ -5,11 +5,6 @@ alias zshrc="nvim ~/.zshrc"
 
 alias vimdiff="nvim -d"
 
-alias gotiki="cd ~/development/Tiki"
-alias gode="cd ~/development"
-alias gotala="cd ~/development/Tiki/talaria"
-alias gogrok="cd ~/development/Grokking"
-
 # git
 alias gpm="git checkout master && git pull origin master"
 alias gc="git checkout"
